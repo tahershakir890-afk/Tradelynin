@@ -139,27 +139,3 @@ partyTxPage=function(){const h=_ptp61();if(!CTX)return h;const id=CTX.id,t=CTX.t
   i=h.indexOf('<div class="pt-bal">');return i<0?card+h:h.slice(0,i)+card+h.slice(i)};
 try{go(1)}catch(e){}
 
-/* ---- sample data (only into an empty book): products, customers, suppliers, "Both" parties, bills and payments ---- */
-function upSample(){
- if(D.c.length||D.s.length||D.sa.length||D.pu.length||D.pay.length)return toast('Sample data can only be added to an empty book');
- const g=D.g[0].id,dt=n=>_ld(new Date(Date.now()-n*864e5)),P={};
- [['Rice 5kg',4.2,5.5],['Sugar 1kg',0.8,1.1],['Cooking Oil 1.8L',3.2,4.3],['Tea Powder 500g',2.1,3],['Flour 10kg',5.5,7.2]].forEach(([n,cost,price])=>{const id=uid();P[n]={id,n,cost,price};D.p.push({id,n,sku:'',cat:'',cost,price,min:10,u1:'Pcs',cv:0})});
- const R={},mk=(n,ph,ad,c,s)=>{const id=uid();R[n]=id;if(c)D.c.push({id,n,ph,ad,open:c.open||0,asof:c.open?dt(40):'',days:c.days==null?null:c.days,lim:c.lim||0});if(s)D.s.push({id,n,ph,ad,open:s.open||0,asof:s.open?dt(40):'',days:null,lim:s.lim||0})};
- mk('Al Noor Trading','5551001','Salmiya',{open:150,days:15},0);mk('Fresh Mart','5551002','Hawally',{days:7},0);mk('City Grocers','5551003','Farwaniya',{lim:1000},0);
- mk('Gulf Foods','5552001','Shuwaikh',0,{open:400});mk('Star Wholesale','5552002','Sharq',0,{});
- mk('Al Rashid Traders','5553001','Jleeb',{days:30},{});mk('Bright Distributors','5553002','Mubarak Al-Kabeer',{days:10},{open:120});
- const bill=(k,who,d,L,paid)=>{const sale=k=='sa',t={id:uid(),no:seqNo(sale?S.pre:'PUR-'),date:dt(d),pid:R[who],g,ret:false,disc:0,tax:0,paid:paid||0,m:'Cash',items:L.map(([n,q])=>{const p=P[n],pr=sale?p.price:p.cost;return{pid:p.id,q,p:pr,uq:q,up:pr,dd:0,n:p.n,c:p.cost}})};D[k].push(t);L.forEach(([n,q])=>addSt(P[n].id,g,(sale?-1:1)*q))};
- bill('pu','Gulf Foods',38,[['Rice 5kg',120],['Sugar 1kg',200],['Cooking Oil 1.8L',80]],200);
- bill('pu','Star Wholesale',30,[['Tea Powder 500g',100],['Flour 10kg',60]],0);
- bill('pu','Al Rashid Traders',24,[['Rice 5kg',40],['Flour 10kg',20]],100);
- bill('pu','Bright Distributors',12,[['Sugar 1kg',100],['Cooking Oil 1.8L',40]],0);
- bill('sa','Al Noor Trading',28,[['Rice 5kg',30],['Sugar 1kg',50]],100);
- bill('sa','Fresh Mart',20,[['Cooking Oil 1.8L',24],['Tea Powder 500g',20]],70);
- bill('sa','City Grocers',16,[['Flour 10kg',15],['Rice 5kg',20]],0);
- bill('sa','Al Rashid Traders',10,[['Tea Powder 500g',30],['Sugar 1kg',40]],0);
- bill('sa','Bright Distributors',6,[['Rice 5kg',25]],60);
- bill('sa','Al Noor Trading',3,[['Cooking Oil 1.8L',18]],0);
- const pay=(ty,who,d,amt,note)=>D.pay.push({id:uid(),ty,pid:R[who],date:dt(d),amt,m:'Cash',note:note||'',al:[]});
- pay('in','Al Noor Trading',14,120,'Part payment');pay('in','Fresh Mart',9,50);pay('in','Al Rashid Traders',4,100,'On account');
- pay('out','Gulf Foods',20,300,'Part payment');pay('out','Al Rashid Traders',8,60,'Paid to supplier side');pay('out','Bright Distributors',2,50);
- save();toast('Sample data added');go(1)}
