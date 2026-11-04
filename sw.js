@@ -1,5 +1,5 @@
 /* TradeLynin service worker — offline app shell + cached export libraries */
-const VER='tradelynin-v117',CDN='https://cdnjs.cloudflare.com';
+const VER='tradelynin-v118',CDN='https://cdnjs.cloudflare.com';
 const CORE=['./','./index.html','./manifest.webmanifest',
  './base.css','./larger-ui.css','./fonts.css','./brand.css','./overrides.css','./history.css','./responsive.css','./stock3.css','./prod5.css','./gd5.css','./party6.css','./invoice.css','./v47.css','./v50.css','./lossrec.css','./v55.css','./uparty.css','./pcard.css',
  './logo.js','./app.js','./docs.js','./templates.js','./screens.js','./txlist.js','./dropdown.js','./filters.js','./settings2.js','./bill2.js','./drafts.js','./photos.js','./bulk2.js','./split2.js','./print2.js','./cashcredit.js','./settle.js','./history.js','./stock3.js','./prod5.js','./nmw.js','./gd5.js','./party6.js','./notify.js','./lossrec.js','./uparty.js','./followup.js','./stepper.js','./features2.js','./pwa.js','./i18n-ar.js',
