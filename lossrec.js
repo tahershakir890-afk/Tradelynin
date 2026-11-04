@@ -144,9 +144,9 @@ async function rxSync(){try{const on=!!S.rxn&&FT('recurring'),td=today(),ev=[];
   const old=(await ntIdbGet('rx'))||{},done=old.done||{};Object.keys(done).forEach(k=>{if(Date.now()-done[k]>5*864e5)delete done[k]});
   await ntIdbSet('rx',{on,ev,done});
   if(on&&Notification.permission=='granted'&&'showTrigger' in Notification.prototype&&window.TimestampTrigger){const reg=await navigator.serviceWorker.ready;
-   ev.filter(e=>e.at>Date.now()&&!done[e.k]).forEach(e=>reg.showNotification(e.tt,{body:e.bd,tag:'tl-rx-'+e.k,badge:'icons/badge-96.png',showTrigger:new TimestampTrigger(e.at),data:{url:'./#lossrec'}}).catch(()=>{}))}
+   ev.filter(e=>e.at>Date.now()&&!done[e.k]).forEach(e=>reg.showNotification(e.tt,{body:e.bd,tag:'tl-rx-'+e.k,badge:'badge-96.png',showTrigger:new TimestampTrigger(e.at),data:{url:'./#lossrec'}}).catch(()=>{}))}
  }catch(e){}}
-async function rxShow(tt,bd,tag){const o={body:bd,badge:'icons/badge-96.png',tag,data:{url:'./#lossrec'}};
+async function rxShow(tt,bd,tag){const o={body:bd,badge:'badge-96.png',tag,data:{url:'./#lossrec'}};
  try{if('serviceWorker' in navigator&&location.protocol!='file:'){const r=await navigator.serviceWorker.ready;await r.showNotification(tt,o);return true}}catch(e){}
  try{new Notification(tt,o);return true}catch(e){return false}}
 let rxBusy=0;

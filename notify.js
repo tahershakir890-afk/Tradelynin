@@ -112,7 +112,7 @@ async function ntPlanSave(p){try{localStorage.setItem(NTP,JSON.stringify(p))}cat
 
 /* ---- show / send ---- */
 const ntCan=()=>'Notification' in window;
-async function ntShow(title,body,tag){const opt={body,badge:'icons/badge-96.png',tag:tag||'tl-nt',data:{url:'./#notif'}};
+async function ntShow(title,body,tag){const opt={body,badge:'badge-96.png',tag:tag||'tl-nt',data:{url:'./#notif'}};
  try{if('serviceWorker' in navigator&&location.protocol!='file:'){const r=await navigator.serviceWorker.ready;await r.showNotification(title,opt);return true}}catch(e){}
  try{const n=new Notification(title,opt);n.onclick=()=>{focus();location.hash='#notif';n.close()};return true}catch(e){return false}}
 let ntBusy=0;

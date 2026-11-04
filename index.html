@@ -1,53 +1,53 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>TradeLynin</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b1f3f"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="TradeLynin"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/larger-ui.css">
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/brand.css">
-<link rel="stylesheet" href="css/overrides.css">
-<link rel="stylesheet" href="css/history.css">
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/stock3.css">
-<link rel="stylesheet" href="css/prod5.css">
-<link rel="stylesheet" href="css/gd5.css">
-<link rel="stylesheet" href="css/party6.css">
-<link rel="stylesheet" href="css/invoice.css">
-<link rel="stylesheet" href="css/v47.css">
-<link rel="stylesheet" href="css/v50.css">
-<link rel="stylesheet" href="css/lossrec.css">
-<link rel="stylesheet" href="css/v55.css">
-<link rel="stylesheet" href="css/uparty.css">
-<link rel="stylesheet" href="css/pcard.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>TradeLynin</title><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b1f3f"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="TradeLynin"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="larger-ui.css">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="brand.css">
+<link rel="stylesheet" href="overrides.css">
+<link rel="stylesheet" href="history.css">
+<link rel="stylesheet" href="responsive.css">
+<link rel="stylesheet" href="stock3.css">
+<link rel="stylesheet" href="prod5.css">
+<link rel="stylesheet" href="gd5.css">
+<link rel="stylesheet" href="party6.css">
+<link rel="stylesheet" href="invoice.css">
+<link rel="stylesheet" href="v47.css">
+<link rel="stylesheet" href="v50.css">
+<link rel="stylesheet" href="lossrec.css">
+<link rel="stylesheet" href="v55.css">
+<link rel="stylesheet" href="uparty.css">
+<link rel="stylesheet" href="pcard.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>if('serviceWorker' in navigator&&location.protocol!='file:'){var _h=!!navigator.serviceWorker.controller,_r=0;navigator.serviceWorker.addEventListener('controllerchange',function(){if(_h&&!_r){_r=1;location.reload()}})}</script>
-<script src="js/logo.js"></script>
+<script src="logo.js"></script>
 </head>
-<body><header><div class="logo" id="hl"><img src="assets/logo.png"></div><div><b id="hn">TradeLynin</b><small>Simple Accounting for Traders</small></div><button id="hb" onclick="tgl()" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
+<body><header><div class="logo" id="hl"><img src="logo.png"></div><div><b id="hn">TradeLynin</b><small>Simple Accounting for Traders</small></div><button id="hb" onclick="tgl()" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></header>
 <main><div id="v"></div></main><nav id="bb"><a id="b1" href="#dash"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.5 9.8V19a1 1 0 0 0 1 1H10v-5.5h4V20h3.5a1 1 0 0 0 1-1V9.8"/></svg><span>Home</span></a><a id="b2" href="#alltx" onclick="AT='';AT1='';AT2='';ATS=''"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h13"/><path d="m15 4.8 3.2 3.2L15 11.2"/><path d="M19 16H6"/><path d="m9 12.8-3.2 3.2L9 19.2"/></svg><span>Transactions</span></a><button id="bp" onclick="fab()" aria-label="Quick actions"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><a id="b3" href="#products"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 4 7.2v9.6l8 4 8-4V7.2l-8-4Z"/><path d="m4 7.2 8 4 8-4"/><path d="M12 11.2v9.6"/></svg><span>Products</span></a><a id="b4" href="#parties"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.2" r="3.2"/><path d="M3 20c0-3.2 2.7-5.8 6-5.8s6 2.6 6 5.8"/><path d="M15.8 5.4a3 3 0 0 1 0 5.6"/><path d="M17.5 14.6c2.1.6 3.5 2.6 3.5 5.4"/></svg><span>Parties</span></a></nav><div id="dr"><div id="nav"></div></div><div id="fo"><div id="fm"></div></div><button id="fab" onclick="fab()" aria-label="Quick action"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Quick Action</button><div id="m"><div id="mc"></div></div><div id="toast"></div>
-<script src="js/app.js"></script><script src="js/docs.js"></script>
-<script src="js/templates.js"></script><script src="js/screens.js"></script><script src="js/txlist.js"></script><script src="js/dropdown.js"></script>
-<script src="js/filters.js"></script>
-<script src="js/settings2.js"></script>
-<script src="js/bill2.js"></script>
-<script src="js/drafts.js"></script>
-<script src="js/photos.js"></script>
-<script src="js/bulk2.js"></script>
-<script src="js/split2.js"></script>
-<script src="js/print2.js"></script>
-<script src="js/cashcredit.js"></script>
-<script src="js/settle.js"></script>
-<script src="js/history.js"></script>
-<script src="js/stock3.js"></script>
-<script src="js/prod5.js"></script>
-<script src="js/nmw.js"></script>
-<script src="js/gd5.js"></script>
-<script src="js/party6.js"></script>
-<script src="js/notify.js"></script>
-<script src="js/lossrec.js"></script>
-<script src="js/uparty.js"></script>
-<script src="js/followup.js"></script>
-<script src="js/stepper.js"></script>
-<script src="js/features2.js"></script>
-<script src="js/pwa.js"></script>
-<script src="js/i18n-ar.js"></script>
+<script src="app.js"></script><script src="docs.js"></script>
+<script src="templates.js"></script><script src="screens.js"></script><script src="txlist.js"></script><script src="dropdown.js"></script>
+<script src="filters.js"></script>
+<script src="settings2.js"></script>
+<script src="bill2.js"></script>
+<script src="drafts.js"></script>
+<script src="photos.js"></script>
+<script src="bulk2.js"></script>
+<script src="split2.js"></script>
+<script src="print2.js"></script>
+<script src="cashcredit.js"></script>
+<script src="settle.js"></script>
+<script src="history.js"></script>
+<script src="stock3.js"></script>
+<script src="prod5.js"></script>
+<script src="nmw.js"></script>
+<script src="gd5.js"></script>
+<script src="party6.js"></script>
+<script src="notify.js"></script>
+<script src="lossrec.js"></script>
+<script src="uparty.js"></script>
+<script src="followup.js"></script>
+<script src="stepper.js"></script>
+<script src="features2.js"></script>
+<script src="pwa.js"></script>
+<script src="i18n-ar.js"></script>
 </body>
 </html>

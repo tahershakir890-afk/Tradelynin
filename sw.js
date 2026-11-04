@@ -1,10 +1,10 @@
 /* TradeLynin service worker — offline app shell + cached export libraries */
-const VER='tradelynin-v116',CDN='https://cdnjs.cloudflare.com';
+const VER='tradelynin-v117',CDN='https://cdnjs.cloudflare.com';
 const CORE=['./','./index.html','./manifest.webmanifest',
- './css/base.css','./css/larger-ui.css','./css/fonts.css','./css/brand.css','./css/overrides.css','./css/history.css','./css/responsive.css','./css/stock3.css','./css/prod5.css','./css/gd5.css','./css/party6.css','./css/invoice.css','./css/v47.css','./css/v50.css','./css/lossrec.css','./css/v55.css','./css/uparty.css','./css/pcard.css',
- './js/logo.js','./js/app.js','./js/docs.js','./js/templates.js','./js/screens.js','./js/txlist.js','./js/dropdown.js','./js/filters.js','./js/settings2.js','./js/bill2.js','./js/drafts.js','./js/photos.js','./js/bulk2.js','./js/split2.js','./js/print2.js','./js/cashcredit.js','./js/settle.js','./js/history.js','./js/stock3.js','./js/prod5.js','./js/nmw.js','./js/gd5.js','./js/party6.js','./js/notify.js','./js/lossrec.js','./js/uparty.js','./js/followup.js','./js/stepper.js','./js/features2.js','./js/pwa.js','./js/i18n-ar.js',
- './fonts/poppins-400.woff','./fonts/poppins-500.woff','./fonts/poppins-700.woff','./assets/logo.png',
- './icons/badge-96.png','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-512-maskable.png','./icons/apple-touch-icon.png'];
+ './base.css','./larger-ui.css','./fonts.css','./brand.css','./overrides.css','./history.css','./responsive.css','./stock3.css','./prod5.css','./gd5.css','./party6.css','./invoice.css','./v47.css','./v50.css','./lossrec.css','./v55.css','./uparty.css','./pcard.css',
+ './logo.js','./app.js','./docs.js','./templates.js','./screens.js','./txlist.js','./dropdown.js','./filters.js','./settings2.js','./bill2.js','./drafts.js','./photos.js','./bulk2.js','./split2.js','./print2.js','./cashcredit.js','./settle.js','./history.js','./stock3.js','./prod5.js','./nmw.js','./gd5.js','./party6.js','./notify.js','./lossrec.js','./uparty.js','./followup.js','./stepper.js','./features2.js','./pwa.js','./i18n-ar.js',
+ './poppins-400.woff','./poppins-500.woff','./poppins-700.woff','./logo.png',
+ './badge-96.png','./icon-192.png','./icon-512.png','./icon-512-maskable.png','./apple-touch-icon.png'];
 // NOTE: bump VER whenever you change any file above, so installed copies pick up the update.
 const LIBS=['/ajax/libs/xlsx/0.18.5/xlsx.full.min.js','/ajax/libs/html2canvas/1.4.1/html2canvas.min.js','/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'].map(p=>CDN+p);
 // Fetch a library in CORS mode so the status is readable; only successful responses are ever cached
@@ -39,11 +39,11 @@ self.addEventListener('periodicsync',e=>{if(e.tag!=='tl-daily')return;
   if(p.day!==td||nm>1200||p.slots.some(x=>x.at&&now-x.at<36e5))return;
   const s=p.slots.find(x=>!x.sent&&x.m<=nm&&nm-x.m<=240);if(!s)return;
   s.sent=1;
-  if(s.n&&s.tt){s.at=now;{const i=p.slots.indexOf(s),nx=p.slots[i+1];if(nx&&!nx.sent)nx.m=Math.max(nx.m,nm+(i==0?(p.g1||240):90))}await self.registration.showNotification(s.tt,{body:s.bd||'',badge:'icons/badge-96.png',tag:'tl-nt-'+s.k+'-'+td,data:{url:'./#notif'}})}
+  if(s.n&&s.tt){s.at=now;{const i=p.slots.indexOf(s),nx=p.slots[i+1];if(nx&&!nx.sent)nx.m=Math.max(nx.m,nm+(i==0?(p.g1||240):90))}await self.registration.showNotification(s.tt,{body:s.bd||'',badge:'badge-96.png',tag:'tl-nt-'+s.k+'-'+td,data:{url:'./#notif'}})}
   await idb(st=>st.put(p,'plan'))})())});
 
 /* ---- recurring-expense reminders (js/lossrec.js keeps the event list in IndexedDB 'rx') ---- */
 self.addEventListener('periodicsync',e=>{if(e.tag!=='tl-rx')return;
  e.waitUntil((async()=>{const p=await idb(s=>s.get('rx'));if(!p||!p.on||!p.ev)return;const now=Date.now();p.done=p.done||{};let ch=0;
-  for(const v of p.ev){if(v.at<=now&&now-v.at<=1296e5&&!p.done[v.k]){p.done[v.k]=now;ch=1;await self.registration.showNotification(v.tt,{body:v.bd||'',badge:'icons/badge-96.png',tag:'tl-rx-'+v.k,data:{url:'./#lossrec'}})}}
+  for(const v of p.ev){if(v.at<=now&&now-v.at<=1296e5&&!p.done[v.k]){p.done[v.k]=now;ch=1;await self.registration.showNotification(v.tt,{body:v.bd||'',badge:'badge-96.png',tag:'tl-rx-'+v.k,data:{url:'./#lossrec'}})}}
   if(ch)await idb(s=>s.put(p,'rx'))})())});
