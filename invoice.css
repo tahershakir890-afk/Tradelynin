@@ -1,0 +1,86 @@
+/* ===== Invoice layout: compact, professional, A4 print / PDF safe (invoices only: .dc-bot2) ===== */
+.dc-pdfbox .dc-paper.pp-a4:has(.dc-bot2),.dc-pdfbox .dc-paper.pp-a5:has(.dc-bot2){min-height:1010px}
+.dc-paper:has(.dc-bot2) .dc-top{padding-bottom:12px}
+.dc-paper:has(.dc-bot2) .dc-meta{margin-top:12px}
+.dc-paper:has(.dc-bot2) .dc-party{margin:12px 0 10px}
+.dc-paper:has(.dc-bot2) .dc-t td{padding:8px 10px}
+.dc-paper:has(.dc-bot2) .dc-t thead{display:table-header-group}
+.dc-paper:has(.dc-bot2) .dc-t.ix th:first-child,.dc-paper:has(.dc-bot2) .dc-t.ix td:first-child{white-space:nowrap;overflow-wrap:normal;word-break:normal;min-width:34px;width:34px}
+.dc-paper .dc-bot2{display:flex;flex-direction:column;flex:1 1 auto;margin-top:0;padding-top:14px}
+.dc-paper .dc-bot2 .dc-pre{width:min(100%,360px);margin-inline-start:auto;border:1px solid var(--line);border-radius:10px;overflow:hidden;break-inside:avoid}
+.dc-paper .dc-bot2 .dc-pre>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:7px 14px;border-bottom:1px solid var(--line);background:#fff;font-size:13.5px}
+.dc-paper .dc-bot2 .dc-pre>div:last-child{border-bottom:0}
+.dc-paper .dc-bot2 .dc-pre span{color:var(--ink2);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.dc-paper .dc-bot2 .dc-pre b{text-align:end;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dc-paper .dc-bot2 .dc-foot{margin-top:auto;padding-top:20px}
+.dc-paper .dc-bot2 .dc-foot .dc-sum2{margin-bottom:0}
+/* financial summary: compact card on the end side */
+.dc-paper .dc-bot2 .dc-sum2{width:min(100%,360px);min-width:0;max-width:100%;margin:0;margin-inline-start:auto;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:none;font-size:13.5px;break-inside:avoid}
+.dc-paper .dc-bot2 .dc-sum2>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:7px 14px;margin:0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:#fff}
+.dc-paper .dc-bot2 .dc-sum2>div>span{display:block;padding:0;background:transparent;color:var(--ink2);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.dc-paper .dc-bot2 .dc-sum2>div>b{display:block;padding:0;border:0;text-align:end;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.dc-paper .dc-bot2 .dc-sum2>div:last-child{border-bottom:0}
+.dc-paper .dc-bot2 .dc-sum2 .dc-tot{background:var(--navy);padding:11px 14px;border-bottom:0}
+.dc-paper .dc-bot2 .dc-sum2 .dc-tot>span{color:#cbd5e1;font-size:11.5px;padding:0;background:transparent}
+.dc-paper .dc-bot2 .dc-sum2 .dc-tot>b{color:#fff;font-size:18px;font-weight:700;padding:0;border:0}
+.dc-paper .dc-bot2 .dc-sum2 .dc-paid>b{font-weight:700}
+.dc-paper .dc-bot2 .dc-sum2 .dc-due{padding:11px 14px;border-top:2px solid currentColor;border-bottom:0}
+.dc-paper .dc-bot2 .dc-sum2 .dc-due.no{background:#fef2f2;color:#b91c1c}
+.dc-paper .dc-bot2 .dc-sum2 .dc-due.ok{background:#f0fdf4;color:#15803d}
+.dc-paper .dc-bot2 .dc-sum2 .dc-due>span{color:inherit;font-size:11.5px;background:transparent;padding:0}
+.dc-paper .dc-bot2 .dc-sum2 .dc-due>b{color:inherit;font-size:18px;font-weight:700;padding:0;border:0}
+/* signatures + footer follow the totals, no forced gap */
+.dc-paper .dc-bot2 .dc-foot{break-inside:avoid;page-break-inside:avoid}
+.dc-paper .dc-bot2 .dc-sign{margin-top:44px;gap:32px}
+.dc-paper .dc-bot2 .dc-thx{margin-top:16px;padding-top:10px;font-size:12px}
+.dc-paper.pp-t80 .dc-bot2 .dc-sum2,.dc-paper.pp-t58 .dc-bot2 .dc-sum2{width:100%}
+.dc-paper.pp-t80 .dc-bot2 .dc-sign,.dc-paper.pp-t58 .dc-bot2 .dc-sign{margin-top:28px;gap:12px}
+@media(max-width:560px){.dc-paper:not(.a4v) .dc-bot2 .dc-sum2{width:100%}.dc-paper:not(.a4v) .dc-bot2 .dc-sign{margin-top:34px;gap:18px}}
+.dc-pdfbox .dc-paper:has(.dc-bot2){padding:0 28px}
+.dc-pdfbox .dc-paper:has(.dc-bot2) .dc-top{padding-top:0}
+@media print{
+ .dc-paper:has(.dc-bot2) .dc-t thead{display:table-header-group}
+ .dc-paper:has(.dc-bot2) .dc-t tr{break-inside:avoid;page-break-inside:avoid}
+ .dc-paper .dc-bot2 .dc-sum2 .dc-tot,.dc-paper .dc-bot2 .dc-sum2 .dc-due{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ html:has(.dc-bot2),body:has(.dc-bot2){background:#fff!important;background-image:none!important;min-height:0!important;height:auto!important}
+}
+
+/* item block fills the page down to the footer; subtotal (and discount / VAT) close the block: label left, amount right */
+.dc-paper .dc-items{flex:1 1 auto;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:0}
+.dc-paper .dc-items>.dc-tw{flex:1 1 auto;border:0;border-radius:0;overflow:visible}
+.dc-paper .dc-items .dc-pre{width:auto;margin:0;border:0;border-top:1.5px solid var(--navy);border-radius:0;background:var(--soft);break-inside:avoid}
+.dc-paper .dc-items .dc-pre>div{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--soft);font-size:13.5px}
+.dc-paper .dc-items .dc-pre>div:last-child{border-bottom:0}
+.dc-paper .dc-items .dc-pre span{color:var(--ink2);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:start}
+.dc-paper .dc-items .dc-pre b{font-weight:700;text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dc-paper .dc-bot2{flex:0 0 auto}
+.dc-paper.pp-t80 .dc-items,.dc-paper.pp-t58 .dc-items{flex:0 0 auto}
+@media print{.dc-paper .dc-items .dc-pre,.dc-paper .dc-items .dc-pre>div{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* item block: dark outline + column lines (lines run down to the subtotal) */
+.dc-paper .dc-items{border:2px solid var(--navy)}
+.dc-paper .dc-items>.dc-tw{display:flex;flex-direction:column}
+.dc-paper .dc-items .dc-t{flex:1 1 auto}
+.dc-paper .dc-items .dc-t td+td,.dc-paper .dc-items .dc-t th+th{border-inline-start:1px solid #cbd5e1}
+.dc-paper .dc-items .dc-t th+th{border-inline-start-color:#ffffff40}
+.dc-paper .dc-items .dc-t tr.dc-fill td{height:100%;padding:0!important;border-top:0!important;background:transparent!important}
+.dc-paper .dc-items .dc-pre{border-top:2px solid var(--navy)}
+@media print{.dc-paper .dc-items{overflow:visible}}
+
+/* item block: light, clean table look */
+.dc-paper .dc-items{border:1px solid #d5deea;border-radius:10px}
+.dc-paper .dc-items .dc-t td+td{border-inline-start:1px solid #e6ecf4}
+.dc-paper .dc-items .dc-t th+th{border-inline-start-color:#ffffff22}
+.dc-paper .dc-items .dc-t td{border-top-color:#e6ecf4}
+.dc-paper .dc-items .dc-pre{border-top:1px solid #d5deea}
+.dc-paper .dc-items .dc-pre>div{border-bottom-color:#e6ecf4}
+
+/* amount column lines up with the subtotal / total figures */
+.dc-paper .dc-items .dc-t{border-collapse:separate;border-spacing:0}
+.dc-paper .dc-items .dc-t th:last-child,.dc-paper .dc-items .dc-t td:last-child{padding-inline-end:14px}
+
+/* bulk edit: Item Name resize grip sits on the column's edge line (half over the next column) */
+.pt-t:has(input.bi) th.pt-nm{overflow:visible;padding-inline-end:12px}
+.pt-t:has(input.bi) th.pt-nm .nm-rz{inset-inline-end:-15px}
+.pt-t:has(input.bi) th.pt-nm .nm-rz b{width:18px;height:32px;border-radius:7px}.pt-t:has(input.bi) th.pt-nm .nm-rz b svg{width:13px;height:13px}
+

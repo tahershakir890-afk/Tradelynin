@@ -1,0 +1,48 @@
+/* TradeLynin v68 — Party cards: accent stripe · avatar · name · type badge + phone · amount | dashed divider | status + last activity · action */
+.pl{gap:12px}
+/* summary tiles */
+.pcd-sum{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 12px}
+.pcd-sm{background:var(--card);border:1px solid var(--bd);border-radius:18px;box-shadow:var(--sh);padding:12px 16px;min-width:0}
+.pcd-sm span{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.pcd-sm b{display:block;margin-top:4px;font-size:20px;line-height:1.2;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcd-sm.in b{color:#16a34a}.pcd-sm.out b{color:#ea580c}
+/* card */
+.pl-r.pcd{position:relative;display:flex;flex-wrap:nowrap;align-items:stretch;gap:0;padding:0;border-radius:20px;overflow:hidden}
+.pcd::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--bd)}
+.pcd.pcd-ok::before{background:#16a34a}
+.pcd.pcd-low::before{background:#ea580c}
+.pcd .bkc{flex:0 0 auto;align-self:center;padding:0 2px 0 14px}
+.pcd-w{flex:1 1 0;min-width:0;display:flex;flex-direction:column;padding:12px 14px 12px 18px}
+.pcd-m{display:flex;align-items:center;gap:12px;width:100%;padding:0;text-align:start}
+.pcd .av{width:46px;height:46px;border-radius:14px;font-size:15px;flex:0 0 auto}
+.pcd-i{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:5px}
+.pcd-n{font-size:15.5px;font-weight:700;line-height:1.25;overflow-wrap:anywhere}
+.pcd-meta{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-width:0}
+.pcd .up-b{margin:0;font-size:11px;font-weight:700;padding:3px 10px;line-height:1.2}
+.pcd-ph{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;color:var(--mu);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pcd-ph svg{flex:0 0 auto}
+.pcd-r{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px;max-width:48%;text-align:right}
+.pcd .up-l{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
+.pcd-v{font-size:18px;line-height:1.2;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* footer */
+.pcd-f{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:11px;padding-top:11px;border-top:1.5px dashed var(--bd)}
+.pcd-s{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-width:0;flex:1 1 auto}
+.pcd-s .tag{font-size:11px;font-weight:700;padding:4px 11px;margin:0;line-height:1.2}
+.tag.st{background:#64748b1f;color:var(--mu)}
+.pcd-la{font-size:12.5px;color:var(--mu);white-space:nowrap}
+.pcd .pl-p{flex:0 0 auto;min-width:104px;min-height:40px;border-radius:12px;font-size:14px;font-weight:700;padding:0 18px;margin:0}
+.pcd.bk-on .pcd-f{margin-top:11px}
+@media(max-width:360px){.pcd-sum{gap:8px}.pcd-sm b{font-size:17px}.pcd .pl-p{min-width:88px;padding:0 12px}.pcd-v{font-size:16px}}
+/* phone sits on the same line as the Customer / Supplier tag */
+.pcd-meta{flex-wrap:nowrap;gap:6px}
+.pcd-meta .up-b{flex:0 0 auto}
+.pcd-ph{flex:1 1 auto;min-width:0;font-size:11.5px;gap:3px}
+.pcd-ph span{overflow:hidden;text-overflow:ellipsis}
+.pcd-r{max-width:none}
+.pcd-v{font-size:16px}
+.pcd-ph{flex:0 1 auto;font-size:11px}
+.pcd .up-b{padding:3px 8px;font-size:10.5px}
+.pcd-v{font-size:15px}
+.pcd-m{gap:9px}
+.pcd .up-b{padding:3px 7px;font-size:10px}
+.pcd-ph svg{width:11px;height:11px}

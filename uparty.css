@@ -1,0 +1,20 @@
+/* TradeLynin v61 — Unified Parties */
+.up-b{font-style:normal;font-size:10px;font-weight:600;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:middle;letter-spacing:.2px;white-space:nowrap}
+.up-kc{background:rgba(22,163,74,.15);color:#16a34a}
+.up-ks{background:rgba(37,99,235,.15);color:#2563eb}
+.up-kb{background:rgba(124,58,237,.16);color:#7c3aed}
+.up-chips{margin:2px 0 8px;flex-wrap:wrap}
+.up-n{opacity:.7;font-weight:500;margin-left:2px}
+.up-x{display:block;font-size:11px}
+.up-l{display:block;font-size:11px;text-align:right}
+.up-hint{font-size:12px;color:var(--mu);margin:0 0 8px}
+.up-dup{margin:2px 0 10px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.up-both{margin:10px 0}
+.up-tabs{display:flex;gap:8px;margin-bottom:8px}
+.up-net{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.up-net>div{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px 10px}
+.up-net span{display:block;font-size:11px;color:var(--mu)}
+.up-net b{font-size:15px}
+.up-note{font-size:12px;color:var(--mu);margin:6px 0 0}
+.up-chips{display:flex;gap:6px}
+.up-chips .s{padding:7px 10px;font-size:13px;white-space:nowrap}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Voucher template</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;color:#1f2937;font-size:13px;padding:26px 32px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #b45309;padding-bottom:12px}
+.top h1{margin:0;font-size:26px;color:#b45309}
+.top .no{color:#6b7280;margin-top:3px}
+.brand{display:flex;align-items:center;gap:10px;text-align:right}
+.brand .logo{width:54px;height:54px}
+.brand b{font-size:16px;display:block}
+.body{display:flex;gap:24px;margin-top:18px}
+.l{flex:1.4}.rr{flex:1}
+.lb{font-size:11px;text-transform:uppercase;color:#6b7280;letter-spacing:.08em}
+.amt{margin-top:14px;border:2px solid #b45309;border-radius:6px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.amt b{font-size:26px;color:#b45309}
+.words{color:#6b7280;font-size:12px;margin-top:4px}
+.meta{border:1px solid #d1d5db;border-radius:6px}
+.meta div{padding:8px 12px;border-bottom:1px solid #e5e7eb}.meta div:last-child{border:0}
+.meta span{display:block;font-size:10.5px;color:#6b7280;text-transform:uppercase}
+.sign{display:flex;gap:40px;margin-top:34px}
+.sign div{flex:1;border-top:1px solid #9ca3af;padding-top:5px;color:#6b7280;font-size:12px}
+table.tpl-items{width:100%;border-collapse:collapse;margin-top:12px}
+table.tpl-items th,table.tpl-items td{border:1px solid #d1d5db;padding:6px 8px;text-align:left}
+.r{text-align:right}
+</style></head><body>
+<div class="top">
+ <div><h1>{{doc_title}}</h1><div class="no">{{doc_no}}</div></div>
+ <div class="brand"><div><b>{{business_name}}</b>{{business_address}}<br>{{business_phone}}</div><div class="logo">{{logo_img}}</div></div>
+</div>
+<div class="body">
+ <div class="l">
+  <div class="lb">{{party_label}}</div><b style="font-size:18px">{{party_name}}</b><br>{{party_phone}}<br>{{party_address}}
+  <div class="amt"><div><div class="lb">{{amount_label}}</div><div class="words">{{amount_words}}</div></div><b>{{amount}}</b></div>
+ </div>
+ <div class="rr"><div class="meta"><div><span>Date</span>{{date}}</div><div><span>Payment mode</span>{{payment_mode}}</div><div><span>Reference</span>{{reference}}</div></div></div>
+</div>
+{{applied_table}}
+{{#if note}}<div class="words"><b>Note:</b> {{note}}</div>{{/if}}
+{{#if show_sign}}<div class="sign"><div>{{sign_label_1}}</div><div>{{sign_label_2}}</div></div>{{/if}}
+</body></html>

@@ -1,0 +1,7 @@
+/* product / party history pages, godown chips, clickable product names */
+.plk{color:var(--pr,#2563eb);font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.plk:hover{text-decoration-style:solid}
+.gdl{white-space:nowrap;line-height:1.5}
+.qa.gdq{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.ptx-act{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.ptx-act button{margin:0;padding:11px 6px;font-size:14px}

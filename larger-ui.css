@@ -1,0 +1,194 @@
+/* Larger touch-friendly sizing + RTL tweaks (was <style id="v2">) */
+html,body {
+  font-size:16px;
+}
+
+header {
+  background:linear-gradient(120deg,#0b1f3f,#16408f);
+  height:60px;
+}
+
+header b {
+  font-size:19px;
+}
+
+header small {
+  font-size:12px;
+}
+
+body {
+  background:radial-gradient(1200px 500px at 100% -10%,#2563eb14,transparent),var(--bg);
+}
+
+.card {
+  border-radius:18px;
+  padding:16px;
+}
+
+h3 {
+  font-size:21px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+h3:before {
+  content:"";
+  width:5px;
+  height:20px;
+  border-radius:5px;
+  background:linear-gradient(var(--blue),var(--teal));
+}
+
+button,.btn {
+  font-size:15px;
+  border-radius:12px;
+  padding:11px 17px;
+}
+
+button.s {
+  font-size:13.5px;
+  padding:7px 12px;
+}
+
+th {
+  font-size:12.5px;
+  background:#2563eb0d;
+}
+
+td,th {
+  padding:12px 11px;
+}
+
+label {
+  font-size:14px;
+}
+
+.k {
+  font-size:13.5px;
+}
+
+.v {
+  font-size:25px;
+}
+
+.grid .card:first-child .v {
+  font-size:32px;
+}
+
+input,select,textarea {
+  font-size:16px;
+  border-radius:12px;
+  padding:11px 12px;
+}
+
+#toast {
+  font-size:15px;
+}
+
+#nav {
+  width:min(268px,82vw);
+  gap:2px;
+  padding-left:10px;
+  padding-right:10px;
+}
+
+#nav a {
+  padding:9px 12px;
+  font-size:15px;
+  border-radius:10px;
+}
+
+#nav a.gp {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:2px;
+  color:#e7eefc;
+}
+
+#nav a.gp i {
+  font-style:normal;
+  opacity:.7;
+  font-weight:700;
+  font-size:17px;
+}
+
+#nav .ng {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+#nav .ng.cur>a.gp {
+  background:#ffffff17;
+  box-shadow:inset 3px 0 0 var(--teal);
+}
+
+#nav a.sb {
+  margin-left:12px;
+  font-size:14px;
+  padding:7px 12px;
+}
+
+#nav a.on {
+  background:linear-gradient(135deg,#2f6bff,#14b8a6);
+  color:#fff;
+  box-shadow:0 2px 10px #14b8a655;
+}
+
+#fab {
+  height:68px;
+  padding:0 32px;
+  font-size:19px;
+  gap:10px;
+  right:20px;
+  bottom:calc(22px + env(safe-area-inset-bottom,0px));
+  box-shadow:0 10px 28px #2563eb77;
+}
+
+#fab svg {
+  width:28px;
+  height:28px;
+}
+
+#mc button[style*="min-height:58px"] {
+  min-height:74px;
+  font-size:17px!important;
+}
+
+[dir=rtl] th,[dir=rtl] td {
+  text-align:right;
+}
+
+[dir=rtl] td.n,[dir=rtl] th.n {
+  text-align:left;
+}
+
+[dir=rtl] #hb {
+  margin-left:0;
+  margin-right:auto;
+}
+
+[dir=rtl] #dr {
+  justify-content:flex-start;
+}
+
+[dir=rtl] #fab {
+  right:auto;
+  left:20px;
+}
+
+[dir=rtl] #nav a.sb {
+  margin-left:0;
+  margin-right:12px;
+}
+
+[dir=rtl] #nav .ng.cur>a.gp {
+  box-shadow:inset -3px 0 0 var(--teal);
+}
+
+[dir=rtl] #inst {
+  margin-left:0;
+  margin-right:auto;
+}

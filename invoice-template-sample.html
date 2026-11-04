@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Invoice template</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;color:#1f2937;font-size:13px;padding:34px 38px}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #0f766e;padding-bottom:14px}
+.top h1{margin:0;font-size:30px;color:#0f766e;letter-spacing:1px}
+.top .no{color:#6b7280;margin-top:4px}
+.brand{display:flex;align-items:center;gap:12px;text-align:right}
+.brand .logo{width:60px;height:60px}
+.brand b{font-size:17px;display:block}
+.info{display:flex;justify-content:space-between;margin:20px 0}
+.lb{font-size:11px;text-transform:uppercase;color:#6b7280;letter-spacing:.08em}
+table.tpl-items{width:100%;border-collapse:collapse;margin-top:6px}
+table.tpl-items th{background:#0f766e;color:#fff;padding:9px 8px;text-align:left}
+table.tpl-items td{padding:9px 8px;border-bottom:1px solid #e5e7eb}
+.r{text-align:right}.c{text-align:center}
+.tot{width:46%;margin-left:auto;margin-top:14px;border-collapse:collapse}
+.tot td{padding:6px 8px}
+.tot tr:last-child td{border-top:2px solid #0f766e;font-weight:700;font-size:16px;color:#0f766e}
+.words{margin-top:10px;color:#6b7280;font-size:12px}
+.sign{display:flex;gap:40px;margin-top:70px}
+.sign div{flex:1;border-top:1px solid #9ca3af;padding-top:6px;color:#6b7280;font-size:12px}
+.thx{text-align:center;margin-top:26px;color:#6b7280}
+</style></head><body>
+<div class="top">
+ <div><h1>{{doc_title}}</h1><div class="no">{{doc_no}}</div></div>
+ <div class="brand"><div><b>{{business_name}}</b>{{business_address}}<br>{{business_phone}}</div><div class="logo">{{logo_img}}</div></div>
+</div>
+<div class="info">
+ <div><div class="lb">{{party_label}}</div><b style="font-size:16px">{{party_name}}</b><br>{{party_phone}}<br>{{party_address}}</div>
+ <div class="r"><div class="lb">Date</div>{{date}}{{#if due_date}}<div class="lb" style="margin-top:6px">Due date</div>{{due_date}}{{/if}}{{#if payment_mode}}<div class="lb" style="margin-top:6px">Payment</div>{{payment_mode}}{{/if}}</div>
+</div>
+{{items_table}}
+<table class="tot">{{summary_rows}}</table>
+<div class="words">{{amount_words}}</div>
+{{#if note}}<div class="words"><b>Note:</b> {{note}}</div>{{/if}}
+{{#if show_sign}}<div class="sign"><div>{{sign_label_1}}</div><div>{{sign_label_2}}</div></div>{{/if}}
+<div class="thx">{{footer_message}}</div>
+</body></html>

@@ -1,0 +1,127 @@
+/* =====================================================================
+ TradeLynin v50 — loaded last
+   1. Premium invoice + voucher layout            (.iv-*  on  .dc-paper.dc-inv)
+   2. Color / Greyscale switch above the preview  (.dc-clr, .dc-gs)
+   3. Pending-balance card in Payment IN / OUT    (.pb-card)
+   4. Frozen column headings                      (Products table / bulk edit, Parties bulk edit)
+ ===================================================================== */
+
+/* ---------- 1. invoice + voucher ---------- */
+.dc-paper.dc-inv{
+  --iv-ink:#101828;--iv-sub:#475467;--iv-mut:#8a94a6;--iv-line:#e4e7ec;--iv-navy:#0b1f3f;--iv-soft:#f7f8fa;
+  color:var(--iv-ink);font-size:13px;line-height:1.5;
+}
+.dc-paper.dc-inv .iv{display:flex;flex-direction:column;flex:1 1 auto;min-height:0;width:100%}
+.dc-paper.dc-inv.pp-a5{padding:28px 28px 24px}
+
+/* header: business on the start side, document name + number on the end side */
+.iv-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding-bottom:22px;border-bottom:2px solid var(--iv-navy)}
+.iv-brand{display:flex;align-items:center;gap:14px;min-width:0;flex:1 1 auto}
+.iv-logo{width:58px;height:58px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.iv-logo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.iv-co{display:flex;flex-direction:column;gap:2px;min-width:0}
+.iv-co b{font-size:17px;font-weight:700;color:var(--iv-navy);letter-spacing:-.2px;line-height:1.25;overflow-wrap:anywhere}
+.iv-co span{font-size:11.5px;color:var(--iv-sub);overflow-wrap:anywhere}
+.iv-ty{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:end}
+.iv-kind{font-size:30px;font-weight:500;letter-spacing:-.8px;color:var(--iv-navy);line-height:1.05}
+.iv-no{font-size:13px;font-weight:600;color:var(--iv-sub);font-variant-numeric:tabular-nums;letter-spacing:.2px}
+
+/* billed to + dates */
+.iv-info{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;padding:22px 0 26px}
+.iv-bill{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 auto}
+.iv-lb{font-size:11.5px;font-weight:500;color:var(--iv-mut);margin-bottom:3px}
+.iv-bill b{font-size:16px;font-weight:600;line-height:1.3;color:var(--iv-ink);overflow-wrap:anywhere}
+.iv-bill span:not(.iv-lb){font-size:12px;color:var(--iv-sub);overflow-wrap:anywhere}
+.iv-meta{display:grid;grid-template-columns:auto auto;column-gap:22px;row-gap:6px;align-content:start;flex:0 0 auto}
+.iv-meta span{font-size:12px;color:var(--iv-mut);white-space:nowrap}
+.iv-meta b{font-size:12.5px;font-weight:600;text-align:end;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* items: no fills, no column lines — one navy rule under the heading, hairlines between rows */
+.iv-main{flex:1 1 auto}
+.iv-t{width:100%;border-collapse:collapse;font-size:12.5px;background:transparent}
+.iv-t th{padding:0 10px 9px;text-align:start;font-size:11.5px;font-weight:600;color:var(--iv-navy);letter-spacing:0;text-transform:none;white-space:nowrap;background:transparent;border:0;border-bottom:1.5px solid var(--iv-navy)}
+.iv-t td{padding:12px 10px;vertical-align:top;border:0;border-bottom:1px solid var(--iv-line);background:transparent!important;overflow-wrap:anywhere;white-space:normal;color:var(--iv-ink);font-size:12.5px}
+.iv-t tr:hover td{background:transparent!important}
+.iv-t tr:last-child td{border-bottom:1px solid var(--iv-line)}
+.iv-t th:first-child,.iv-t td:first-child{width:30px;padding-inline-start:0;color:var(--iv-mut);white-space:nowrap}
+.iv-t th:last-child,.iv-t td:last-child{padding-inline-end:0}
+.iv-t .n{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
+.iv-t td.n:last-child{font-weight:600}
+.iv-t td b{font-weight:600}
+.iv-t small{font-size:11px;color:var(--iv-mut)}
+.iv-t thead{display:table-header-group}
+.iv-t tr{break-inside:avoid;page-break-inside:avoid}
+
+/* voucher bill list: first column holds the bill number */
+.iv-t.vc th:first-child,.iv-t.vc td:first-child{width:auto;color:var(--iv-ink);font-weight:600;padding-inline-end:16px}
+
+/* totals: quiet rows, one dark Total bar */
+.iv-sum{width:min(100%,330px);margin:20px 0 0;margin-inline-start:auto;break-inside:avoid;page-break-inside:avoid}
+.iv-sum>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:6px 0;font-size:13px;font-variant-numeric:tabular-nums}
+.iv-sum>div span{color:var(--iv-sub)}
+.iv-sum>div b{font-weight:600;white-space:nowrap}
+.iv-sum .iv-tot{margin-top:8px;padding:14px 16px;background:var(--iv-navy);border-radius:6px;align-items:center}
+.iv-sum .iv-tot span{color:#d0d5dd;font-size:12.5px}
+.iv-sum .iv-tot b{color:#fff;font-size:20px;font-weight:700;letter-spacing:-.3px}
+
+/* voucher amount panel */
+.iv-amt{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:0 0 26px;padding:20px 22px;background:var(--iv-navy);border-radius:6px}
+.iv-amt span{color:#d0d5dd;font-size:13px}
+.iv-amt b{color:#fff;font-size:28px;font-weight:700;letter-spacing:-.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.iv-sec{margin:0 0 10px;font-size:12px;font-weight:600;color:var(--iv-navy)}
+.iv-on{margin:0;font-size:12.5px;color:var(--iv-sub)}
+
+/* signatures + thank-you pinned to the bottom of the page */
+.iv-foot{margin-top:auto;padding-top:40px;break-inside:avoid;page-break-inside:avoid}
+.iv-sign{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:24px}
+.iv-sign>div{display:flex;flex-direction:column;gap:6px}
+.iv-sign i{display:block;height:42px;border-bottom:1px solid var(--iv-mut)}
+.iv-sign span{font-size:11.5px;color:var(--iv-sub)}
+.iv-thx{padding-top:14px;border-top:1px solid var(--iv-line);text-align:center;font-size:12px;color:var(--iv-sub)}
+
+/* page sizes */
+.dc-pdfbox .dc-paper.dc-inv{padding:0 34px;min-height:1010px}
+.dc-paper.dc-inv.pp-a5{min-height:0}
+.dc-pdfbox .dc-paper.dc-inv.pp-a5{min-height:700px}
+.dc-paper.dc-inv.pp-t80,.dc-paper.dc-inv.pp-t58{font-size:12px}
+.dc-paper.dc-inv.pp-t80 .iv-top,.dc-paper.dc-inv.pp-t58 .iv-top{flex-direction:column;gap:10px;padding-bottom:12px}
+.dc-paper.dc-inv.pp-t80 .iv-ty,.dc-paper.dc-inv.pp-t58 .iv-ty{align-items:flex-start;text-align:start}
+.dc-paper.dc-inv.pp-t80 .iv-kind,.dc-paper.dc-inv.pp-t58 .iv-kind{font-size:20px}
+.dc-paper.dc-inv.pp-t80 .iv-logo,.dc-paper.dc-inv.pp-t58 .iv-logo{width:40px;height:40px}
+.dc-paper.dc-inv.pp-t80 .iv-info,.dc-paper.dc-inv.pp-t58 .iv-info{flex-direction:column;gap:12px;padding:12px 0 14px}
+.dc-paper.dc-inv.pp-t80 .iv-t .c0,.dc-paper.dc-inv.pp-t58 .iv-t .c0{display:none}
+.dc-paper.dc-inv.pp-t80 .iv-t td,.dc-paper.dc-inv.pp-t58 .iv-t td{padding:8px 4px}
+.dc-paper.dc-inv.pp-t80 .iv-t th,.dc-paper.dc-inv.pp-t58 .iv-t th{padding:0 4px 6px}
+.dc-paper.dc-inv.pp-t80 .iv-sum,.dc-paper.dc-inv.pp-t58 .iv-sum,.dc-paper.dc-inv.pp-t80 .iv-amt,.dc-paper.dc-inv.pp-t58 .iv-amt{width:100%}
+.dc-paper.dc-inv.pp-t80 .iv-amt b,.dc-paper.dc-inv.pp-t58 .iv-amt b{font-size:20px}
+.dc-paper.dc-inv.pp-t80 .iv-foot,.dc-paper.dc-inv.pp-t58 .iv-foot{padding-top:18px}
+.dc-paper.dc-inv.pp-t80 .iv-sign,.dc-paper.dc-inv.pp-t58 .iv-sign{gap:12px}
+@media print{
+  .iv-sum .iv-tot,.iv-amt{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dc-paper.dc-inv{font-family:inherit}
+}
+
+/* ---------- 2. Color / Greyscale ---------- */
+.dc-clr{display:flex;align-items:center;gap:2px;width:max-content;max-width:100%;margin:0 auto 12px;padding:3px;background:var(--bg);border:1px solid var(--bd);border-radius:13px}
+.dc-clr button{min-height:36px;padding:0 16px;border:0;border-radius:10px;background:transparent;color:var(--mu);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;gap:8px;box-shadow:none}
+.dc-clr button.on{background:var(--card);color:var(--tx);box-shadow:0 1px 3px #0f172a26}
+.dc-clr i{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 auto}
+.dc-clr button[data-c="c"] i{background:conic-gradient(#ef4444,#f59e0b,#22c55e,#3b82f6,#a855f7,#ef4444)}
+.dc-clr button[data-c="g"] i{background:linear-gradient(90deg,#111827,#e5e7eb)}
+.dc-paper.dc-gs{filter:grayscale(1)}
+@media print{.dc-clr{display:none!important}.dc-paper.dc-gs{filter:grayscale(1)}}
+
+/* ---------- 3. Payment IN / OUT: pending balance ---------- */
+.pb-card{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:4px 0 12px;padding:14px 16px;border-radius:14px;border:1px solid var(--bd);background:var(--bg)}
+.pb-card span{font-size:13.5px;font-weight:600;color:var(--mu)}
+.pb-card b{font-size:22px;font-weight:700;letter-spacing:-.4px;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--tx)}
+.pb-card.ok{background:#16a34a12;border-color:#16a34a45}.pb-card.ok b,.pb-card.ok span{color:#15803d}
+.pb-card.low{background:#dc262610;border-color:#dc262645}.pb-card.low b,.pb-card.low span{color:#b91c1c}
+.pb-card.adv{background:#2563eb10;border-color:#2563eb45}.pb-card.adv b,.pb-card.adv span{color:#1d4ed8}
+
+/* ---------- 4. frozen column headings ----------
+   The table scrolls inside its own box (both ways), so the heading row stays pinned at the top of the box while rows move. */
+:is(.pt-w,.tw:has(input.bi)){padding-top:0;max-height:calc(100vh - 300px);max-height:calc(100dvh - 300px);min-height:min(320px,60vh);overflow:auto;-webkit-overflow-scrolling:touch}
+:is(.pt-w,.tw:has(input.bi)) th{position:sticky;top:0;z-index:5;background-color:var(--card);background-image:linear-gradient(#2563eb14,#2563eb14);box-shadow:0 1px 0 var(--bd)}
+:is(.pt-w,.tw:has(input.bi)) th.pt-nm,:is(.pt-w,.tw:has(input.bi)) th.bkc{z-index:8}
+:is(.pt-w,.tw:has(input.bi)) td.pt-nm,:is(.pt-w,.tw:has(input.bi)) td.bkc{z-index:4}

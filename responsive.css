@@ -1,0 +1,220 @@
+/* ==========================================================================
+   TradeLynin — responsive layer (loaded LAST, after overrides.css)
+   Phones  : < 700px     (incl. small 320–360px phones, landscape phones)
+   Tablets : 700–1023px  (iPad / Android tablets, portrait + landscape)
+   Desktop : >= 1024px   (laptops / PCs; extra room at 1440px and 1920px)
+   ========================================================================== */
+
+/* ---------- 1. Safe foundations for every screen ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-height:100vh;min-height:100dvh;max-width:100%}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+img,svg,video,canvas{max-width:100%}
+main,#v{min-width:0}
+.card,.hx-card,.hx-list,.fp-card{min-width:0}
+.tw{max-width:100%;-webkit-overflow-scrolling:touch}
+table{max-width:100%}
+/* notch / rounded-corner safety in landscape */
+header{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px))}
+/* comfortable tap targets on touch screens */
+@media (pointer:coarse){
+  #nav a{min-height:44px}
+  button:not(.s):not(.qa-t):not([class*=hx-]):not(.dc-x):not(.fp-bk){min-height:44px}
+  button.s{min-height:38px}
+}
+/* no sticky-hover lift on touch devices */
+@media (hover:none){button:hover{transform:none;filter:none}}
+/* modals/sheets never taller than the visible screen (iOS URL bar safe) */
+#m>div{max-height:92vh;max-height:92dvh}
+#m.full>#mc{height:100vh;height:100dvh}
+
+/* Bottom bar is docked flush to the screen bottom on every touch size (no gap under it).
+   It already pads itself for the iPhone home-indicator, so the page needs no extra bottom padding. */
+:root{padding-bottom:0!important}
+html{background:var(--bg)}
+@media (max-width:1023px){
+  #bb{left:0!important;right:0!important;bottom:0!important;width:auto!important;transform:none!important;margin:0;
+      border-radius:20px 20px 0 0!important;border-left:0!important;border-right:0!important;border-bottom:0!important;
+      padding-left:max(8px,calc((100% - 640px)/2))!important;padding-right:max(8px,calc((100% - 640px)/2))!important;
+      padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))!important}
+}
+
+/* ---------- 2. Very small phones (<= 360px) ---------- */
+@media (max-width:360px){
+  main{padding-left:10px;padding-right:10px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .v{font-size:20px}
+  .grid .card:first-child .v,.hx-big{font-size:26px}
+  .f2{grid-template-columns:1fr}
+  th,td{padding:10px 8px}
+  #fab{height:56px;padding:0 20px;font-size:16px}
+  #fab svg{width:22px;height:22px}
+}
+
+/* ---------- 3. Phones (< 700px) ---------- */
+@media (max-width:699px){
+  .f2{grid-template-columns:1fr 1fr}
+  .row{gap:8px}
+  #fab{display:none}                       /* bottom bar has its own + button */
+  main{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))!important}
+  #m>div{padding:16px 14px}
+  #toast{max-width:calc(100vw - 28px);bottom:calc(96px + env(safe-area-inset-bottom,0px));text-align:center}
+}
+
+/* ---------- 4. Phone in landscape (short screens) ---------- */
+@media (max-height:480px) and (orientation:landscape){
+  header{height:50px}
+  #bb{padding-top:4px}
+  #bb svg{width:20px;height:20px}
+  #bb a{font-size:10px;gap:1px}
+  #bb #bp{flex-basis:44px;width:44px;height:44px;margin:-14px 6px 2px}
+  main{padding-bottom:84px!important}
+  #m>div{max-height:100vh;max-height:100dvh;border-radius:0}
+  .fp-h{padding-top:max(6px,env(safe-area-inset-top,0px));padding-bottom:6px}
+  .fp-f{padding-top:6px;padding-bottom:max(6px,env(safe-area-inset-bottom,0px))}
+  .fp-f>*{min-height:42px}
+  #nav{padding-top:12px}
+}
+
+/* ---------- 5. Tablets / iPad (700px – 1023px) ---------- */
+@media (min-width:700px) and (max-width:1023px){
+  html,body{font-size:16px}
+  main{max-width:960px;padding:22px 24px 120px}
+  header{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .grid .card:first-child{grid-column:1/-1}
+  .hx-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .hx-hero{padding:26px 28px 20px}
+  .hx-big{font-size:42px}
+  .hx-row{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+  .hx-pend{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .xl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .f2{gap:14px}
+  #nav{width:min(320px,50vw)}
+  #m>div{max-width:720px}
+  #m.full{--fpw:820px}
+  .fp-card .f2{grid-template-columns:1fr 1fr}
+  #fab{display:none}
+  #toast{bottom:104px}
+}
+/* Tablet landscape (iPad 1024 wide is handled by the desktop block below) */
+@media (min-width:900px) and (max-width:1023px){
+  main{max-width:1100px}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grid .card:first-child{grid-column:span 2}
+  .hx-pend{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* ---------- 6. Laptop / PC redesign (>= 1024px) ---------- */
+@media (min-width:1024px){
+  :root{--sbw:264px;--hh:64px}
+  body{background:radial-gradient(1400px 560px at 100% -10%,#0670ff17,transparent),radial-gradient(900px 420px at 0% 100%,#00bdc810,transparent),var(--bg)}
+
+  /* top bar: slim, full width, sits above the sidebar */
+  header{height:var(--hh);padding:0 32px;gap:14px;z-index:30}
+  header small{font-size:12.5px}
+
+  /* sidebar: card-like rail with clear active state */
+  #dr{inset:var(--hh) auto 0 0;width:var(--sbw);z-index:20}
+  #nav{width:var(--sbw);padding:18px 14px 24px;gap:3px;border-right:1px solid #ffffff14;box-shadow:none;
+       background:linear-gradient(180deg,#0b1f3f 0%,#0a2a63 100%)}
+  #nav a{padding:11px 14px;font-size:15px;border-radius:12px;transition:background .15s,transform .15s}
+  #nav a:hover{background:#ffffff1c}
+  #nav a.sb{margin-left:18px;font-size:14px;padding:8px 12px;border-radius:10px}
+  #nav::-webkit-scrollbar{width:8px}
+  #nav::-webkit-scrollbar-thumb{background:#ffffff33;border-radius:8px}
+  .nqa{min-height:46px;font-size:15px;background:linear-gradient(135deg,var(--blue),var(--teal));border:0;box-shadow:0 6px 16px #0670ff55}
+  .nqa:hover{filter:brightness(1.08)}
+
+  /* content area */
+  main{margin-left:var(--sbw);padding:28px 40px 56px!important;max-width:none}
+  #v{max-width:1280px;margin:0 auto}
+  h3{font-size:24px}
+  .card,.hx-card{padding:20px;border-radius:18px;transition:box-shadow .2s,border-color .2s}
+  .card:hover,.hx-card:hover{box-shadow:0 8px 26px #0a2a7314}
+
+  /* dashboard: KPI tiles in one row, hero fills width */
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .grid .card:first-child{grid-column:span 2}
+  .hx-hero{padding:30px 34px 24px;border-radius:26px}
+  .hx-g{font-size:22px}
+  .hx-big{font-size:46px}
+  .hx-row{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
+  .hx-row b{font-size:15.5px}
+  .hx-tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .hx-t{transition:transform .15s,box-shadow .15s}
+  .hx-t:hover{transform:translateY(-2px);box-shadow:0 10px 24px #0a2a7320}
+  .hx-bars{height:170px;gap:12px}
+  .hx-bars i{max-width:44px}
+  .hx-acc{flex-wrap:wrap;overflow:visible}
+  .hx-pend{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .hx-a:hover,.hx-r:hover{background:#2563eb0a}
+
+  /* lists: cards in 2–3 columns instead of one long strip */
+  .xl{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+
+  /* tables: roomy, readable, sticky header */
+  .tw{padding:6px 10px;border-radius:16px}
+  th{position:sticky;top:0;z-index:1;font-size:12px}
+  th,td{padding:14px 14px;white-space:normal}
+  td.n,th.n{white-space:nowrap}
+  tr:hover td{background:#2563eb0d}
+
+  /* forms: two-column feel */
+  .f2{grid-template-columns:1fr 1fr;gap:16px}
+  input,select,textarea{font-size:15px}
+  .fp-card{padding:6px 24px 22px;border-radius:18px}
+  .fp-card .f2.fw{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  #m.full{--fpw:1040px}
+  /* full-page add/edit screens sit beside the sidebar's width, not under it */
+  .fp-f>*{max-width:260px}
+  .fp-f{justify-content:flex-end}
+  .fp-f>#ok{max-width:320px}
+
+  /* pop-up dialogs: centred card, not a bottom sheet */
+  #m{align-items:center;padding:24px;background:#0b1f3fb3}
+  #m>div{border-radius:22px;margin:0;max-width:720px;max-height:88vh;max-height:88dvh;box-shadow:0 30px 80px #0b1f3f66}
+  #m.full{align-items:stretch;padding:0}
+
+  /* floating bits */
+  #fab{display:none}                       /* sidebar has "Quick Action" */
+  #fo{z-index:40}
+  #fm{right:32px;bottom:32px}
+  #toast{bottom:32px;left:calc(50% + var(--sbw)/2)}
+  [dir=rtl] #toast{left:calc(50% - var(--sbw)/2)}
+  #bkbar{left:var(--sbw);padding-left:40px;padding-right:40px}
+
+  /* custom scrollbars for the page */
+  html{scrollbar-width:thin;scrollbar-color:#94a3b8 transparent}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#94a3b88c;border-radius:10px;border:2px solid transparent;background-clip:content-box}
+
+  [dir=rtl] header{padding:0 32px}
+  [dir=rtl] #nav{border-right:0;border-left:1px solid #ffffff14}
+  [dir=rtl] #bkbar{left:0}
+  [dir=rtl] .fp-f{justify-content:flex-start}
+}
+
+/* ---------- 7. Large desktops (>= 1440px) ---------- */
+@media (min-width:1440px){
+  :root{--sbw:284px}
+  main{padding:32px 56px 64px!important}
+  #v{max-width:1480px}
+  .grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .grid .card:first-child{grid-column:span 2}
+  .hx-pend{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .xl{grid-template-columns:repeat(auto-fill,minmax(400px,1fr))}
+  #m.full{--fpw:1180px}
+}
+@media (min-width:1900px){
+  html,body{font-size:17px}
+  #v{max-width:1720px}
+}
+
+/* ---------- 8. Print stays untouched; reduced-motion respected ---------- */
+@media print{
+  main{margin:0!important;padding:0!important}
+  header,#dr,#bb,#fab{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
